@@ -1,9 +1,14 @@
 import requests
+import sys
+
+waypoints = sys.argv[1] # where waypoints has some variables long and lat for the longitude and latitude of the node respectively 
+coordinates = ""
+# string formatting for input into mapbox api
+for node in waypoints:
+    coordinates = coordinates + waypoints["long"] + "," + waypoints["lat"] + ";"
+coordinates = coordinates[:-1] # remove last ; from coordinates string
 
 access_token = "pk.eyJ1IjoianJvb25leTA1IiwiYSI6ImNtOHE1ODE4YjA5YTMyaXNocGE4OTl6eGwifQ.vS0CZaN1jviMfPYsj4UWNQ"
-coordinates = "-122.42,37.78;-122.45,37.91;-122.48,37.73"  # example long,lat;long,lat;... -> can take multiple
-                                                           # co-ords from server and input as a concatenated string
-                                                           # in order to retrieve optimised order of nodes to be visited
 url = f"https://api.mapbox.com/optimized-trips/v1/mapbox/driving/{coordinates}?geometries=geojson&access_token={access_token}"
 
 response = requests.get(url)
