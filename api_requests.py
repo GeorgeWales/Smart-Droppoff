@@ -8,7 +8,7 @@ for node in waypoints:
     coordinates = coordinates + waypoints["long"] + "," + waypoints["lat"] + ";"
 coordinates = coordinates[:-1] # remove last ; from coordinates string
 
-access_token = "pk.eyJ1IjoianJvb25leTA1IiwiYSI6ImNtOHE1ODE4YjA5YTMyaXNocGE4OTl6eGwifQ.vS0CZaN1jviMfPYsj4UWNQ"
+access_token = "" # api token
 url = f"https://api.mapbox.com/optimized-trips/v1/mapbox/driving/{coordinates}?geometries=geojson&access_token={access_token}"
 
 response = requests.get(url)
