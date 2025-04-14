@@ -17,3 +17,5 @@ def get_order(waypoints):
     waypoint_order = [wp["waypoint_index"] for wp in data["waypoints"]] # retrieves node id for each node/waypoint
 
     print("Optimized order of stops:", waypoint_order)
+
+    return route
